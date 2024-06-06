@@ -29,7 +29,7 @@ defineProps<Props>();
 
       <Dialog>
         <DialogTrigger>
-          <QuestionMarkCircle :size="5"></QuestionMarkCircle>
+          <QuestionMarkCircle ></QuestionMarkCircle>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
