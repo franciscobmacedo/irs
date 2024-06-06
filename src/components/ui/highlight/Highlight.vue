@@ -1,0 +1,7 @@
+
+
+<template>
+  <span class="text-muted-foreground">
+    <slot />
+  </span>
+</template>
