@@ -5,8 +5,6 @@ import { Highlight } from "@/components/ui/highlight";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,

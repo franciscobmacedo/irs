@@ -3,7 +3,6 @@ import { formatNumber } from "../lib/utils";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
