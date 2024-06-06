@@ -48,7 +48,7 @@ const data = computed((): DataItem[] => [
       Simulação de IRS nos diferentes anos
     </h1>
     <p class="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
-      Foram recentemente aprovadas os <a class="underline underline-offset-2 hover:text-neutral-600" href="https://www.publico.pt/2024/04/19/economia/noticia/irs-baixa-oitavo-escaloes-ganha-menos-ha-novo-alivio-2087600" target="_blank">novos escalões de IRS</a>. Este simulador permite comparar os impostos a pagar para os anos de 2023, 2024 (antigo) e 2024 (novo) com base
+      Foram recentemente aprovadas os <a class="underline underline-offset-2 hover:text-neutral-600" href="https://eco.sapo.pt/2024/06/05/nova-coligacao-negativa-no-parlamento-esquerda-chumba-tabelas-de-irs-da-ad-com-abstencao-do-chega/" target="_blank">novos escalões de IRS</a>. Este simulador permite comparar os impostos a pagar para os anos de 2023, 2024 (antigo) e 2024 (novo) com base
       num rendimento coletável (anual). Para saber o seu rendimento coletável, consulte <a class="underline underline-offset-2 hover:text-neutral-600" href="https://www.comparaja.pt/blog/escaloes-irs#:~:text=O%20que%20%C3%A9%20o%20rendimento,da%20tua%20categoria%20de%20rendimentos." target="_blank">este artigo</a>.
     </p>
     <div class="flex flex-col items-start justify-start py-12 gap-1">
