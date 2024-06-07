@@ -39,12 +39,12 @@ defineProps<Props>();
       >
         e numa taxa média de
         {{ results.averageRate100 }}% aplicada sobre
-        <Highlight>{{ results.averageRateIncome }}€</Highlight> ({{
+        <HighLight>{{ results.averageRateIncome }}€</HighLight> ({{
           results.averageRate100
         }}% x {{ results.averageRateIncome }}€ =
         {{ rounded(results.averageRateTax.value) }}€)</span
       >. O resultado é um imposto a pagar de
-      <Highlight>{{ rounded(results.taxToPay.value) }}€</Highlight>.
+      <HighLight>{{ rounded(results.taxToPay.value) }}€</HighLight>.
     </p>
   </section>
 </template>
