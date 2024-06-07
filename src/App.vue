@@ -71,8 +71,8 @@ const data = computed((): DataItem[] => [
         target="_blank"
         >novos escalões de IRS</a
       >. Este simulador permite comparar os impostos a pagar para os anos de
-      2023, 2024 (antigo) e 2024 (novo) com base no rendimento coletável
-      (anual) ou no rendimento bruto mensal (14 meses).
+      2023, 2024 (antigo) e 2024 (novo) com base no rendimento coletável (anual)
+      ou no rendimento bruto mensal (14 meses).
     </p>
     <div
       class="flex flex-col lg:flex-row items-start justify-start py-12 gap-14"
@@ -105,7 +105,7 @@ const data = computed((): DataItem[] => [
             <Input
               type="number"
               placeholder="Rendimento coletável (€)"
-              class="pl-10 touch-none"
+              class="pl-10 touch-manipulation"
               v-model="monthlyIncome"
             />
             <span
@@ -119,9 +119,13 @@ const data = computed((): DataItem[] => [
               variant="outline"
               @click="increaseMonthlyIncome(-500)"
               :disabled="taxableIncome <= 0"
+              class="touch-manipulation"
               >- 500€</Button
             >
-            <Button variant="outline" @click="increaseMonthlyIncome(500)"
+            <Button
+              variant="outline"
+              @click="increaseMonthlyIncome(500)"
+              class="touch-manipulation"
               >+ 500€</Button
             >
           </div>
@@ -157,7 +161,7 @@ const data = computed((): DataItem[] => [
             <Input
               type="number"
               placeholder="Rendimento coletável (€)"
-              class="pl-10 touch-none"
+              class="pl-10 touch-manipulation"
               v-model="taxableIncome"
             />
             <span
@@ -169,11 +173,15 @@ const data = computed((): DataItem[] => [
           <div class="flex gap-1">
             <Button
               variant="outline"
+              class="touch-manipulation"
               @click="increaseTaxableIncome(-5000)"
               :disabled="taxableIncome <= 0"
               >- 5000€</Button
             >
-            <Button variant="outline" @click="increaseTaxableIncome(5000)"
+            <Button
+              variant="outline"
+              @click="increaseTaxableIncome(5000)"
+              class="touch-manipulation"
               >+ 5000€</Button
             >
           </div>
