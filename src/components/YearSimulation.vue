@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { rounded } from "@/lib/utils";
-import { Highlight } from "@/components/ui/highlight";
+import HighLight from "@/components/HighLight.vue";
 import TaxRanksTable from "@/components/TaxRanksTable.vue";
 import InfoDialog from "@/components/InfoDialog.vue";
 import { SimulationResult } from "@/lib/types";
@@ -27,11 +27,11 @@ defineProps<Props>();
     </div>
     <p class="leading-7 [&:not(:first-child)]:mt-6">
       O rendimento colectável de
-      <Highlight>{{ results.taxableIncome }}€</Highlight> encontra-se no
-      <Highlight>{{ results.normalRankIndex.value + 1 }}</Highlight> escalão de
+      <HighLight>{{ results.taxableIncome }}€</HighLight> encontra-se no
+      <HighLight>{{ results.normalRankIndex.value + 1 }}</HighLight> escalão de
       IRS o que resulta numa taxa normal de
-      <Highlight>{{ results.normalRate100 }}%</Highlight> aplicada sobre
-      <Highlight>{{ results.normalRateIncome }}€</Highlight> ({{
+      <HighLight>{{ results.normalRate100 }}%</HighLight> aplicada sobre
+      <HighLight>{{ results.normalRateIncome }}€</HighLight> ({{
         results.normalRate100
       }}% x {{ results.normalRateIncome }}€ =
       {{ rounded(results.normalRateTax.value) }}€)<span

@@ -82,10 +82,10 @@ const tableData = computed((): DataItem[] => [
       class="flex flex-col lg:flex-row items-start justify-start py-12 gap-14"
     >
       <div class="flex flex-col items-start justify-start gap-1">
-        <span
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        <div
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-end gap-1"
         >
-          Rendimento bruto mensal
+          <span>Rendimento bruto mensal</span>
           <InfoDialog title="Rendimento bruto mensal">
             <p>
               O rendimento bruto mensal é o valor total que recebe antes de
@@ -101,7 +101,7 @@ const tableData = computed((): DataItem[] => [
               para mais informações.
             </p>
           </InfoDialog>
-        </span>
+        </div>
         <div
           class="flex flex-col md:flex-row gap-2 items-start md:items-center"
         >
@@ -137,10 +137,10 @@ const tableData = computed((): DataItem[] => [
       </div>
 
       <div class="flex flex-col items-start justify-start gap-1">
-        <span
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        <div
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-end gap-1"
         >
-          Rendimento coletável (anual)
+          <span>Rendimento coletável (anual)</span>
           <InfoDialog title="Rendimento coletável (anual)">
             <p>
               O Rendimento coletável (anual) é a diferença entre o rendimento
@@ -157,7 +157,7 @@ const tableData = computed((): DataItem[] => [
               para mais informações.
             </p>
           </InfoDialog>
-        </span>
+        </div>
         <div
           class="flex flex-col md:flex-row gap-2 items-start md:items-center"
         >

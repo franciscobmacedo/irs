@@ -6,7 +6,7 @@ import { rounded } from "../lib/utils";
 // by convention, composable function names start with "use"
 export function useTax(
   taxableIncome: Ref<number>,
-  irsRanks: IRSRank[]
+  irsRanks: IRSRank[],
 ): SimulationResult {
   // ranks
   const normalRank = computed((): IRSRank => {

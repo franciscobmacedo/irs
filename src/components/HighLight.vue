@@ -1,5 +1,3 @@
-
-
 <template>
   <span class="text-muted-foreground">
     <slot />

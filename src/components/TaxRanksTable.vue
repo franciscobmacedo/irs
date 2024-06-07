@@ -26,7 +26,8 @@ const getMin = (rankIndex: number): number | undefined | null => {
 <template>
   <div class="flex flex-col items-start justify-center">
     <p class="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
-      O rendimento colectável <strong>{{taxableIncome}}€</strong> encontra-se no <strong>{{rankIndex + 1}}</strong> escalão de IRS 
+      O rendimento colectável <strong>{{ taxableIncome }}€</strong> encontra-se
+      no <strong>{{ rankIndex + 1 }}</strong> escalão de IRS
     </p>
     <Table class="">
       <TableHeader>
@@ -40,7 +41,9 @@ const getMin = (rankIndex: number): number | undefined | null => {
         <TableRow
           v-for="(taxRank, index) in irsRanks"
           :key="index"
-          :class="index === rankIndex && 'outline-dashed outline-2 outline-offset-2  '"
+          :class="
+            index === rankIndex && 'outline-dashed outline-2 outline-offset-2  '
+          "
         >
           <TableCell class="font-medium">
             <span v-if="getMin(index)">

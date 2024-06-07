@@ -9,7 +9,6 @@ export const rounded = (value: number) => {
   return Math.round(value * 100) / 100;
 };
 
-
 export function formatNumber(num: number, decimalPlaces: number) {
   // Round the number to the specified number of decimal places
   const multiplier = Math.pow(10, decimalPlaces);

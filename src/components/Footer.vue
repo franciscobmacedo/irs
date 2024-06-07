@@ -20,23 +20,21 @@
       <div
         class="text-center text-sm leading-loose text-muted-foreground md:text-left flex gap-5"
       >
-        <span class="inline-block">
-          Outras ferramentas:
-          </span>
-          <a
-            href="https://freelancept.fmacedo.com"
-            target="_blank"
-            class="underline underline-offset-4 font-bold decoration-foreground"
-          >
-            freelancept
-          </a>
-          <a
-            href="https://devedores.fmacedo.com"
-            target="_blank"
-            class="underline underline-offset-4 font-bold decoration-foreground"
-          >
-            devedores
-          </a>
+        <span class="inline-block"> Outras ferramentas: </span>
+        <a
+          href="https://freelancept.fmacedo.com"
+          target="_blank"
+          class="underline underline-offset-4 font-bold decoration-foreground"
+        >
+          freelancept
+        </a>
+        <a
+          href="https://devedores.fmacedo.com"
+          target="_blank"
+          class="underline underline-offset-4 font-bold decoration-foreground"
+        >
+          devedores
+        </a>
       </div>
     </div>
   </footer>

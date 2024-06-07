@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import QuestionMarkCircle from "@/components/icons/QuestionMarkCircle.vue";
+import { QuestionMarkIcon } from "@radix-icons/vue";
 defineProps({
   title: { required: false, type: String },
 });
@@ -15,13 +15,13 @@ defineProps({
 <template>
   <Dialog>
     <DialogTrigger>
-      <QuestionMarkCircle></QuestionMarkCircle>
+      <QuestionMarkIcon class="w-4 h-4" />
     </DialogTrigger>
     <DialogContent>
       <DialogHeader v-if="title">
         <DialogTitle>{{ title }}</DialogTitle>
       </DialogHeader>
-      <slot></slot>
+      <slot />
     </DialogContent>
   </Dialog>
 </template>

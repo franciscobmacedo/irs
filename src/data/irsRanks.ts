@@ -1,6 +1,5 @@
 import { IRSRank } from "@/lib/types";
 
-
 export const IRS_RANKS_2024_NEW: IRSRank[] = [
   { max: 7703, normalRate: 13, averageRate: 13 },
   { max: 11623, normalRate: 16.5, averageRate: 14.18 },
@@ -16,16 +15,15 @@ export const IRS_RANKS_2024_OLD: IRSRank[] = [
   { max: 7703, normalRate: 13.25, averageRate: 13.25 },
   { max: 11623, normalRate: 18, averageRate: 14.825 },
   { max: 16472, normalRate: 23, averageRate: 17.251 },
-  { max: 21321, normalRate: 26, averageRate: 19.240 },
+  { max: 21321, normalRate: 26, averageRate: 19.24 },
   { max: 27146, normalRate: 32.75, averageRate: 22.139 },
   { max: 39791, normalRate: 37, averageRate: 26.862 },
   { max: 51997, normalRate: 43.5, averageRate: 30.768 },
   { max: 81199, normalRate: 45, averageRate: 35.886 },
   { normalRate: 48, averageRate: null },
- ];
+];
 
-
- export const IRS_RANKS_2023: IRSRank[] = [
+export const IRS_RANKS_2023: IRSRank[] = [
   { max: 7479, normalRate: 14.5, averageRate: 14.5 },
   { max: 11284, normalRate: 21, averageRate: 16.69 },
   { max: 15992, normalRate: 26.5, averageRate: 19.58 },
@@ -35,4 +33,4 @@ export const IRS_RANKS_2024_OLD: IRSRank[] = [
   { max: 50483, normalRate: 43.5, averageRate: 31.99 },
   { max: 78834, normalRate: 45, averageRate: 36.67 },
   { normalRate: 48, averageRate: null },
- ];
+];

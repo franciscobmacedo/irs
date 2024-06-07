@@ -10,9 +10,9 @@ import {
   TableRow,
 } from "./ui/table";
 import { DataItem } from "@/lib/types";
-import DiffSpan from '@/components/DiffSpan.vue';
-import TaxRanksTable from '@/components/TaxRanksTable.vue';
-import InfoDialog from '@/components/InfoDialog.vue';
+import DiffSpan from "@/components/DiffSpan.vue";
+import TaxRanksTable from "@/components/TaxRanksTable.vue";
+import InfoDialog from "@/components/InfoDialog.vue";
 
 // taxable income
 interface Props {
@@ -20,7 +20,6 @@ interface Props {
 }
 
 defineProps<Props>();
-
 </script>
 
 <template>
@@ -30,16 +29,15 @@ defineProps<Props>();
       <TableRow>
         <TableHead> </TableHead>
         <TableHead v-for="item in data" :key="item.header">
-        {{item.header}}
-        <InfoDialog :title="`Escalões de IRS para ${item.header}`">
-        <TaxRanksTable
-          :taxableIncome="item.result.taxableIncome.value"
-          :rankIndex="item.result.normalRankIndex.value"
-          :irsRanks="item.result.irsRanks"
-        ></TaxRanksTable>
-      </InfoDialog>
-
-      </TableHead>
+          {{ item.header }}
+          <InfoDialog :title="`Escalões de IRS para ${item.header}`">
+            <TaxRanksTable
+              :taxableIncome="item.result.taxableIncome.value"
+              :rankIndex="item.result.normalRankIndex.value"
+              :irsRanks="item.result.irsRanks"
+            ></TaxRanksTable>
+          </InfoDialog>
+        </TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
