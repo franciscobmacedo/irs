@@ -14,13 +14,13 @@ export const IRS_RANKS_2024_NEW: IRSRank[] = [
 ];
 export const IRS_RANKS_2024_OLD: IRSRank[] = [
   { max: 7703, normalRate: 13.25, averageRate: 13.25 },
-  { max: 11623, normalRate: 18, averageRate: 14.9 },
-  { max: 16472, normalRate: 23, averageRate: 17.3 },
-  { max: 21321, normalRate: 26, averageRate: 19.2 },
-  { max: 27146, normalRate: 32.75, averageRate: 22.1 },
-  { max: 39791, normalRate: 37, averageRate: 26.9 },
-  { max: 51997, normalRate: 43.5, averageRate: 30.8 },
-  { max: 81199, normalRate: 46, averageRate: 35.9 },
+  { max: 11623, normalRate: 18, averageRate: 14.825 },
+  { max: 16472, normalRate: 23, averageRate: 17.251 },
+  { max: 21321, normalRate: 26, averageRate: 19.240 },
+  { max: 27146, normalRate: 32.75, averageRate: 22.139 },
+  { max: 39791, normalRate: 37, averageRate: 26.862 },
+  { max: 51997, normalRate: 43.5, averageRate: 30.768 },
+  { max: 81199, normalRate: 45, averageRate: 35.886 },
   { normalRate: 48, averageRate: null },
  ];
 

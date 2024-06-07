@@ -1,5 +1,4 @@
-import { ComputedRef } from 'vue';
-
+import { ComputedRef, Ref } from "vue";
 
 export type IRSRank = {
   max?: number;
@@ -7,8 +6,9 @@ export type IRSRank = {
   averageRate: number | null;
 };
 
-
 export type SimulationResult = {
+  irsRanks: IRSRank[];
+  taxableIncome: Ref<number>;
   normalRank: ComputedRef<IRSRank>;
   normalRankIndex: ComputedRef<number>;
   averageRank: ComputedRef<IRSRank>;

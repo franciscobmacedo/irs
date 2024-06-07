@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ref, computed } from "vue";
+import { ref, computed, Ref } from "vue";
 import {
   IRS_RANKS_2023,
   IRS_RANKS_2024_NEW,
@@ -13,12 +13,28 @@ import YearSimulation from "@/components/YearSimulation.vue";
 import Table from "@/components/Table.vue";
 import Footer from "@/components/Footer.vue";
 import { DataItem } from "@/lib/types";
+import InfoDialog from "@/components/InfoDialog.vue";
 
 // taxable income
+const monthlyIncome = ref(1000);
 const taxableIncome = ref(10000);
-const increaseTaxableIncome = (value: number) => {
-  const result = taxableIncome.value + value;
+
+const increaseIncome = (value: number, income: Ref<number>) => {
+  const result = income.value + value;
+  income.value = result < 0 ? 0 : result;
+};
+
+const setTaxableIncomeFromMonthlyIncome = () => {
+  const result = monthlyIncome.value * 14 - 4104;
   taxableIncome.value = result < 0 ? 0 : result;
+};
+const increaseMonthlyIncome = (value: number) => {
+  increaseIncome(value, monthlyIncome);
+  setTaxableIncomeFromMonthlyIncome();
+};
+
+const increaseTaxableIncome = (value: number) => {
+  increaseIncome(value, taxableIncome);
 };
 
 const results2024New = useTax(taxableIncome, IRS_RANKS_2024_NEW);
@@ -43,48 +59,127 @@ const data = computed((): DataItem[] => [
 </script>
 
 <template>
-  <div class="container mx-auto my-24">
+  <div class="container mx-auto my-8 md:my-24">
     <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
       Simulação de IRS nos diferentes anos
     </h1>
     <p class="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
-      Foram recentemente aprovadas os <a class="underline underline-offset-2 hover:text-neutral-600" href="https://eco.sapo.pt/2024/06/05/nova-coligacao-negativa-no-parlamento-esquerda-chumba-tabelas-de-irs-da-ad-com-abstencao-do-chega/" target="_blank">novos escalões de IRS</a>. Este simulador permite comparar os impostos a pagar para os anos de 2023, 2024 (antigo) e 2024 (novo) com base
-      num rendimento coletável (anual). Para saber o seu rendimento coletável, consulte <a class="underline underline-offset-2 hover:text-neutral-600" href="https://www.comparaja.pt/blog/escaloes-irs#:~:text=O%20que%20%C3%A9%20o%20rendimento,da%20tua%20categoria%20de%20rendimentos." target="_blank">este artigo</a>.
+      Foram recentemente aprovadas os
+      <a
+        class="underline underline-offset-2 hover:text-neutral-600"
+        href="https://eco.sapo.pt/2024/06/05/nova-coligacao-negativa-no-parlamento-esquerda-chumba-tabelas-de-irs-da-ad-com-abstencao-do-chega/"
+        target="_blank"
+        >novos escalões de IRS</a
+      >. Este simulador permite comparar os impostos a pagar para os anos de
+      2023, 2024 (antigo) e 2024 (novo) com base no rendimento coletável
+      (anual) ou no rendimento bruto mensal (14 meses).
     </p>
-    <div class="flex flex-col items-start justify-start py-12 gap-1">
-      <span
-        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Rendimento coletável (anual)
-      </span>
-      <div class="flex flex-col md:flex-row gap-2 items-start md:items-center">
-        <div class="relative w-full max-w-sm items-center">
-          <Input
-            type="number"
-            placeholder="Rendimento coletável (€)"
-            class="pl-10 w-96"
-            v-model="taxableIncome"
-          />
-          <span
-            class="absolute start-0 inset-y-0 flex items-center justify-center px-2"
-          >
-            <CurrencyEuro class="size-6 text-muted-foreground"></CurrencyEuro>
-          </span>
+    <div
+      class="flex flex-col lg:flex-row items-start justify-start py-12 gap-14"
+    >
+      <div class="flex flex-col items-start justify-start gap-1">
+        <span
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Rendimento bruto mensal
+          <InfoDialog title="Rendimento bruto mensal">
+            <p>
+              O rendimento bruto mensal é o valor total que recebe antes de
+              descontar impostos, contribuições para a segurança social e outras
+              deduções. É assumido que é trabalhor de categoria A ou H, que
+              recebe 14 meses e que as deduções à coleta são de 4104€. Consulte
+              <a
+                class="underline underline-offset-2 hover:text-neutral-600"
+                href="https://www.comparaja.pt/blog/escaloes-irs#:~:text=O%20que%20%C3%A9%20o%20rendimento,da%20tua%20categoria%20de%20rendimentos."
+                target="_blank"
+                >este artigo</a
+              >
+              para mais informações.
+            </p>
+          </InfoDialog>
+        </span>
+        <div
+          class="flex flex-col md:flex-row gap-2 items-start md:items-center"
+        >
+          <div class="relative w-full max-w-sm items-center">
+            <Input
+              type="number"
+              placeholder="Rendimento coletável (€)"
+              class="pl-10 touch-none"
+              v-model="monthlyIncome"
+            />
+            <span
+              class="absolute start-0 inset-y-0 flex items-center justify-center px-2"
+            >
+              <CurrencyEuro class="size-6 text-muted-foreground"></CurrencyEuro>
+            </span>
+          </div>
+          <div class="flex gap-1">
+            <Button
+              variant="outline"
+              @click="increaseMonthlyIncome(-500)"
+              :disabled="taxableIncome <= 0"
+              >- 500€</Button
+            >
+            <Button variant="outline" @click="increaseMonthlyIncome(500)"
+              >+ 500€</Button
+            >
+          </div>
         </div>
-        <div class="flex gap-1">
-          <Button
-            variant="outline"
-            @click="increaseTaxableIncome(-5000)"
-            :disabled="taxableIncome <= 0"
-            >- 5000€</Button
-          >
-          <Button variant="outline" @click="increaseTaxableIncome(5000)"
-            >+ 5000€</Button
-          >
+      </div>
+
+      <div class="flex flex-col items-start justify-start gap-1">
+        <span
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Rendimento coletável (anual)
+          <InfoDialog title="Rendimento coletável (anual)">
+            <p>
+              O Rendimento coletável (anual) é a diferença entre o rendimento
+              bruto anual e as deduções à coleta. É o valor que serve de base
+              para calcular o imposto a pagar. É assumido que é trabalhor de
+              categoria A ou H, que recebe 14 meses e que as deduções à coleta
+              são de 4104€. Consulte
+              <a
+                class="underline underline-offset-2 hover:text-neutral-600"
+                href="https://www.comparaja.pt/blog/escaloes-irs#:~:text=O%20que%20%C3%A9%20o%20rendimento,da%20tua%20categoria%20de%20rendimentos."
+                target="_blank"
+                >este artigo</a
+              >
+              para mais informações.
+            </p>
+          </InfoDialog>
+        </span>
+        <div
+          class="flex flex-col md:flex-row gap-2 items-start md:items-center"
+        >
+          <div class="relative w-full max-w-sm items-center">
+            <Input
+              type="number"
+              placeholder="Rendimento coletável (€)"
+              class="pl-10 touch-none"
+              v-model="taxableIncome"
+            />
+            <span
+              class="absolute start-0 inset-y-0 flex items-center justify-center px-2"
+            >
+              <CurrencyEuro class="size-6 text-muted-foreground"></CurrencyEuro>
+            </span>
+          </div>
+          <div class="flex gap-1">
+            <Button
+              variant="outline"
+              @click="increaseTaxableIncome(-5000)"
+              :disabled="taxableIncome <= 0"
+              >- 5000€</Button
+            >
+            <Button variant="outline" @click="increaseTaxableIncome(5000)"
+              >+ 5000€</Button
+            >
+          </div>
         </div>
       </div>
     </div>
-
     <Table :data="data"></Table>
     <div class="my-12">
       <p class="leading-7 [&:not(:first-child)]:mt-6">

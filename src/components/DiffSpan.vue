@@ -19,17 +19,23 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const retreiveValue = (index: number): number | null => {
+  const field = props.data[index].result[props.field];
+  if ("value" in field) {
+    const value = field.value;
+    if (typeof value !== "number") return null;
+    return value;
+  }
+  return null;
+};
+
 const value = computed((): number | null => {
-  const value = props.data[props.index].result[props.field].value;
-  if (typeof value !== "number") return null;
-  return value;
+  return retreiveValue(props.index);
 });
 
 const previousValue = computed((): number | null => {
   if (props.index === 0) return null;
-  const value = props.data[props.index - 1].result[props.field].value;
-  if (typeof value !== "number") return null;
-  return value;
+  return retreiveValue(props.index - 1);
 });
 
 const diff = computed((): number | null => {
@@ -44,7 +50,7 @@ const diffPercentage = computed((): number | null => {
 </script>
 
 <template>
-  <TooltipProvider :delayDuration=100>
+  <TooltipProvider :delayDuration="100">
     <Tooltip>
       <TooltipTrigger as-child>
         <span class="font-semibold gap-2 flex items-center">

@@ -65,6 +65,8 @@ export function useTax(
 
   // expose managed state as return value
   return {
+    irsRanks,
+    taxableIncome,
     normalRank,
     normalRankIndex,
     averageRank,
