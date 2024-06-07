@@ -8,10 +8,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import QuestionMarkCircle from "@/components/icons/QuestionMarkCircle.vue";
-interface Props {
-  title: string;
-}
-defineProps<Props>();
+defineProps({
+  title: { required: false, type: String },
+});
 </script>
 <template>
   <Dialog>
@@ -19,7 +18,7 @@ defineProps<Props>();
       <QuestionMarkCircle></QuestionMarkCircle>
     </DialogTrigger>
     <DialogContent>
-      <DialogHeader>
+      <DialogHeader v-if="title">
         <DialogTitle>{{ title }}</DialogTitle>
       </DialogHeader>
       <slot></slot>
