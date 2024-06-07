@@ -118,7 +118,7 @@ const data = computed((): DataItem[] => [
             <Button
               variant="outline"
               @click="increaseMonthlyIncome(-500)"
-              :disabled="taxableIncome <= 0"
+              :disabled="monthlyIncome <= 0"
               class="touch-manipulation"
               >- 500€</Button
             >
