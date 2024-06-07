@@ -1,9 +1,41 @@
-# Vue 3 + TypeScript + Vite
+# Income tax simulator [PT]
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+ IRS (Income tax) simulator. Compare how much income tax you would pay in different scenarios:
 
-## Recommended Setup
+- 2023
+- 2024 (current) - the tax brackets that are applied now
+- 2024 (new)  - the new tax brackets
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+live at https://irs.fmacedo.com
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+> Note: the simulator is in Portuguese
+
+![preview](img/preview.gif)
+
+## Contributing
+
+Contributions are welcome. Although I enjoy helping people with their financial burdens, I do have limited time to work on this. Feel free to open an issue or submit a pull request. If you're not sure where to start, mention me in the comments!
+
+## Local setup (with node)
+
+### Instal dependencies
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run dev
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
+
+### Tests
+
+There are no tests right now. Feel free to change that by opening a PR.
