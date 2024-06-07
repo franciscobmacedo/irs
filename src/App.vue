@@ -15,38 +15,37 @@ import Footer from "@/components/Footer.vue";
 import { DataItem } from "@/lib/types";
 import InfoDialog from "@/components/InfoDialog.vue";
 
-// taxable income
+// specific deductions - currently hardcoded but could be dynamic
+const SPECIFIC_DEDUCTIONS = 4104;
+// monthly income
 const monthlyIncome = ref(1000);
+
+// taxable income
 const taxableIncome = ref(10000);
 
 watch(monthlyIncome, () => {
-  // Update another value based on the new value of inputValue
-  // For example, you can update a reactive property or perform some side effect
-  setTaxableIncomeFromMonthlyIncome();
-})
-const increaseIncome = (value: number, income: Ref<number>) => {
+  const result = monthlyIncome.value * 14 - SPECIFIC_DEDUCTIONS;
+  taxableIncome.value = result < 0 ? 0 : result;
+});
+
+const addIncome = (value: number, income: Ref<number>) => {
   const result = income.value + value;
   income.value = result < 0 ? 0 : result;
 };
 
-const setTaxableIncomeFromMonthlyIncome = () => {
-  const result = monthlyIncome.value * 14 - 4104;
-  taxableIncome.value = result < 0 ? 0 : result;
-};
-const increaseMonthlyIncome = (value: number) => {
-  increaseIncome(value, monthlyIncome);
-  
+const addMonthlyIncome = (value: number) => {
+  addIncome(value, monthlyIncome);
 };
 
-const increaseTaxableIncome = (value: number) => {
-  increaseIncome(value, taxableIncome);
+const addTaxableIncome = (value: number) => {
+  addIncome(value, taxableIncome);
 };
 
 const results2024New = useTax(taxableIncome, IRS_RANKS_2024_NEW);
 const results2024Old = useTax(taxableIncome, IRS_RANKS_2024_OLD);
 const results2023 = useTax(taxableIncome, IRS_RANKS_2023);
 
-const data = computed((): DataItem[] => [
+const tableData = computed((): DataItem[] => [
   {
     header: "2023",
     result: results2023,
@@ -122,14 +121,14 @@ const data = computed((): DataItem[] => [
           <div class="flex gap-1">
             <Button
               variant="outline"
-              @click="increaseMonthlyIncome(-500)"
+              @click="addMonthlyIncome(-500)"
               :disabled="monthlyIncome <= 0"
               class="touch-manipulation"
               >- 500€</Button
             >
             <Button
               variant="outline"
-              @click="increaseMonthlyIncome(500)"
+              @click="addMonthlyIncome(500)"
               class="touch-manipulation"
               >+ 500€</Button
             >
@@ -179,13 +178,13 @@ const data = computed((): DataItem[] => [
             <Button
               variant="outline"
               class="touch-manipulation"
-              @click="increaseTaxableIncome(-5000)"
+              @click="addTaxableIncome(-5000)"
               :disabled="taxableIncome <= 0"
               >- 5000€</Button
             >
             <Button
               variant="outline"
-              @click="increaseTaxableIncome(5000)"
+              @click="addTaxableIncome(5000)"
               class="touch-manipulation"
               >+ 5000€</Button
             >
@@ -193,7 +192,7 @@ const data = computed((): DataItem[] => [
         </div>
       </div>
     </div>
-    <Table :data="data"></Table>
+    <Table :data="tableData"></Table>
     <div class="my-12">
       <p class="leading-7 [&:not(:first-child)]:mt-6">
         Resultados descritivos da simulação
