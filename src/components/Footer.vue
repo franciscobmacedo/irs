@@ -13,7 +13,7 @@
             target="_blank"
             class="underline underline-offset-4 font-bold decoration-foreground"
           >
-            Francisco Mascedo
+            Francisco Macedo
           </a>
         </span>
       </div>
