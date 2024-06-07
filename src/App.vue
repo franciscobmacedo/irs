@@ -53,7 +53,7 @@ const data = computed((): DataItem[] => [
   },
 
   {
-    header: "2024 (antigo)",
+    header: "2024 (actual)",
     result: results2024Old,
   },
   {
@@ -76,7 +76,7 @@ const data = computed((): DataItem[] => [
         target="_blank"
         >novos escalões de IRS</a
       >. Este simulador permite comparar os impostos a pagar para os anos de
-      2023, 2024 (antigo) e 2024 (novo) com base no rendimento coletável (anual)
+      2023, 2024 (actual) e 2024 (novo) com base no rendimento coletável (anual)
       ou no rendimento bruto mensal (14 meses).
     </p>
     <div
@@ -207,7 +207,7 @@ const data = computed((): DataItem[] => [
         />
         <YearSimulation
           :results="results2024Old"
-          :year="'2024 (antigo)'"
+          :year="'2024 (actual)'"
           :taxableIncome="taxableIncome"
           :irsRanks="IRS_RANKS_2024_OLD"
         />
