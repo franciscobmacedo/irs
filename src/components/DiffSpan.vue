@@ -2,13 +2,8 @@
 import { DataItem, SimulationResult } from "@/lib/types";
 import { computed } from "vue";
 import { rounded } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import QuestionMarkCircle from "@/components/icons/QuestionMarkCircle.vue";
+
+import InfoDialog from "@/components/InfoDialog.vue";
 
 // taxable income
 interface Props {
@@ -50,26 +45,19 @@ const diffPercentage = computed((): number | null => {
 </script>
 
 <template>
-  <TooltipProvider :delayDuration="100">
-    <Tooltip>
-      <TooltipTrigger as-child>
-        <span class="font-semibold gap-2 flex items-center">
-          <span
-            class="text-sm"
-            v-if="diff"
-            :class="diff > 0 ? 'text-red-400' : 'text-green-400'"
-            >{{ diff > 0 ? `+${rounded(diff)}€` : `-${rounded(-diff)}€` }}
-          </span>
-          <span v-if="diffPercentage" class="text-xs text-muted-foreground">
-            {{ diffPercentage }}%</span
-          >
+  <span class="font-semibold gap-2 flex items-center">
+    <span
+      class="text-sm"
+      v-if="diff"
+      :class="diff > 0 ? 'text-red-400' : 'text-green-400'"
+      >{{ diff > 0 ? `+${rounded(diff)}€` : `-${rounded(-diff)}€` }}
+    </span>
+    <span v-if="diffPercentage" class="text-xs text-muted-foreground">
+      {{ diffPercentage }}%</span
+    >
 
-          <QuestionMarkCircle v-if="diffPercentage"></QuestionMarkCircle>
-        </span>
-      </TooltipTrigger>
-      <TooltipContent>
-        <p>diferença entre esta coluna e a anterior</p>
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
+    <InfoDialog v-if="diffPercentage">
+      Diferença entre esta coluna e a anterior
+    </InfoDialog>
+  </span>
 </template>
