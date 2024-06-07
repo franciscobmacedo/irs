@@ -1,10 +1,14 @@
+<script setup lang="ts">
+import { Button } from "@/components/ui/button";
+import { GithubLogoIcon } from "@radix-icons/vue";
+</script>
 <template>
   <footer class="py-6 md:py-0">
     <div
       class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row"
     >
       <div
-        class="text-center text-sm leading-loose text-muted-foreground md:text-left"
+        class="text-center text-sm leading-loose text-muted-foreground md:text-left flex items-center"
       >
         <span class="inline-block">
           Feito por
@@ -16,7 +20,13 @@
             Francisco Macedo
           </a>
         </span>
+        <Button variant="ghost">
+          <a href="https://github.com/franciscobmacedo/irs" target="_blank">
+            <GithubLogoIcon class="w-6 h-fit"></GithubLogoIcon>
+          </a>
+        </Button>
       </div>
+
       <div
         class="text-center text-sm leading-loose text-muted-foreground md:text-left flex gap-5"
       >

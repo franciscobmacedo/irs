@@ -14,6 +14,7 @@ import Table from "@/components/Table.vue";
 import Footer from "@/components/Footer.vue";
 import { DataItem } from "@/lib/types";
 import InfoDialog from "@/components/InfoDialog.vue";
+import { GithubLogoIcon } from "@radix-icons/vue";
 
 // specific deductions - currently hardcoded but could be dynamic
 const SPECIFIC_DEDUCTIONS = 4104;
@@ -63,7 +64,14 @@ const tableData = computed((): DataItem[] => [
 </script>
 
 <template>
-  <div class="container mx-auto my-8 md:my-24">
+  <section class="absolute top-2 right-0">
+    <Button variant="ghost">
+      <a href="https://github.com/franciscobmacedo/irs" target="_blank">
+        <GithubLogoIcon class="w-6 h-fit"></GithubLogoIcon>
+      </a>
+    </Button>
+  </section>
+  <div class="container mx-auto my-8 md:my-24 relative">
     <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
       Simulação de IRS nos diferentes anos
     </h1>
