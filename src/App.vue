@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ref, computed, Ref } from "vue";
+import { ref, computed, Ref, watch } from "vue";
 import {
   IRS_RANKS_2023,
   IRS_RANKS_2024_NEW,
@@ -19,6 +19,11 @@ import InfoDialog from "@/components/InfoDialog.vue";
 const monthlyIncome = ref(1000);
 const taxableIncome = ref(10000);
 
+watch(monthlyIncome, () => {
+  // Update another value based on the new value of inputValue
+  // For example, you can update a reactive property or perform some side effect
+  setTaxableIncomeFromMonthlyIncome();
+})
 const increaseIncome = (value: number, income: Ref<number>) => {
   const result = income.value + value;
   income.value = result < 0 ? 0 : result;
@@ -30,7 +35,7 @@ const setTaxableIncomeFromMonthlyIncome = () => {
 };
 const increaseMonthlyIncome = (value: number) => {
   increaseIncome(value, monthlyIncome);
-  setTaxableIncomeFromMonthlyIncome();
+  
 };
 
 const increaseTaxableIncome = (value: number) => {
